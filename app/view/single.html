@@ -3,7 +3,22 @@
         <header>
             <h2>{{title}}</h2>
         </header>
-        <p>{{content}}</p>
+        <pre>{{content}}</pre>
+
+        <br>
+        <hr>
+        <br>
+
+        {% if comments == false %}
+        <p>Nenhum cometário encontrado.</p>
+        {% else %}
+        {% for comment in comments %}
+        <h3>{{comment.name}}</h3>
+        <p>{{comment.message}}</p>
+        <br>
+        {% endfor %}
+        {% endif %}
+
     </article>
 
 </section>

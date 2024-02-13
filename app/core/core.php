@@ -8,7 +8,13 @@
             else
             {$controller = 'homeController';}
 
-            $action = 'index';
+            if (isset($urlGet['method']))
+            {
+                $action = $urlGet['method'];
+            }
+            else{
+                $action = 'index';
+            }
             
 
             if (!class_exists($controller))

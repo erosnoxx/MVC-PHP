@@ -10,6 +10,8 @@ body{background-color: #6495ED;}
 .content article{margin-bottom: 20px;}
 .content h1{font: 24px Arial;color:#6495ED; margin-bottom: 20px;}
 
+.float-right{float: right};
+
 
 article h2{padding-bottom: 17px;}
 article h2 a{font:22px Arial; color: #333;text-decoration: none;}

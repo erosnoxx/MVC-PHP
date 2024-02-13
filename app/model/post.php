@@ -12,13 +12,9 @@
             $res = array();
 
             while ($row = $sql->fetchObject('Post'))
-            {
-                $res[] = $row;
-            }
+            {$res[] = $row;}
 
-            if (!$res) {
-                throw new Exception("Error Processing Request");
-            }
+            if (!$res) {throw new Exception("Error Processing Request");}
 
             return $res;
         }
@@ -37,8 +33,79 @@
             {
                 throw new Exception("Error Processing Request");
             }
+            else
+            {
+                $res->comments = Comments::getComments($res->id);
+            }
 
             return $res;
+        }
+
+        public static function insert($data)
+        {
+            if (empty($data['title']) || empty($data['content']))
+            {
+                throw new Exception("Preencha todos os campos");
+
+                return false;
+            }
+
+            $conn = Connection::getConn();
+
+            $sql = "INSERT INTO post (title, content) VALUES (:tit, :cont)";
+            $sql = $conn->prepare($sql);
+            $sql->bindValue(':tit', $data['title']);
+            $sql->bindValue(':cont', $data['content']);
+            $res = $sql->execute();
+            
+            if ($res === false)
+            {
+                throw new Exception("Falha ao inserir a publicação.");
+
+                return false;
+            }
+
+            return true;
+        }
+
+        public static function update($params)
+        {
+            $conn = Connection::getConn();
+
+            $sql = "UPDATE post SET title = :tit, content = :cont WHERE id = :id";
+            $sql = $conn->prepare($sql);
+            $sql->bindValue(':tit', $params['title']);
+            $sql->bindValue(':cont', $params['content']);
+            $sql->bindValue(':id', $params['id']);
+            $res = $sql->execute();
+
+
+            if ($res === false)
+            {
+                throw new Exception("Falha ao alterar a publicação.");
+                return false;
+            }
+
+            return true;
+        }
+
+        public static function delete($id)
+        {
+            $conn = Connection::getConn();
+            
+            $sql = "DELETE FROM post WHERE id = :id";
+            $sql = $conn->prepare($sql);
+            $sql->bindValue(':id', $id);
+            $res = $sql->execute();
+            
+            if ($res === false)
+            {
+                throw new Exception("Falha ao deletar a publicação.");
+                return false;
+            }
+
+            return true;
+
         }
     }
 ?>

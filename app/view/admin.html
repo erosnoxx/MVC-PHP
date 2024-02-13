@@ -1,0 +1,22 @@
+<h1>Gerenciador de Conteúdo</h1>
+
+<a href="?page=admin&method=create">Criar Publicação</a><br>
+<br>
+<hr>
+<br>
+<table border="2">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for post in posts%}
+    <tr>
+        <th>{{post.id}}</th>
+        <th>{{post.title}}</th>
+        <th><a href="?page=admin&method=change&id={{post.id}}">Update</a></th>
+        <th><a href="?page=admin&method=delete&id={{post.id}}">Delete</a></th>
+    </tr>
+    {% endfor %}
+</table>

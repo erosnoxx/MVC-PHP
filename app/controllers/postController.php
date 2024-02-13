@@ -15,6 +15,7 @@
                 $args = array();
                 $args['title'] = $collect->title;
                 $args['content'] = $collect->content;
+                $args['comments'] = $collect->comments;
 
                 $content = $template->render($args);
 

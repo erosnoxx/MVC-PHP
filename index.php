@@ -7,8 +7,11 @@
     require_once 'app/controllers/homeController.php';
     require_once 'app/controllers/errorController.php';
     require_once 'app/controllers/postController.php';
+    require_once 'app/controllers/aboutController.php';
+    require_once 'app/controllers/adminController.php';
     
     require_once 'app/model/post.php';
+    require_once 'app/model/comments.php';
 
     require_once 'vendor/autoload.php';
     
