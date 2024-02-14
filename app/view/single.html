@@ -8,6 +8,21 @@
         <br>
         <hr>
         <br>
+        <h1>Comentários</h1>
+        <br>
+        <form action="?page=post&method=addComment" method="post">
+            <input type="hidden" name="id" id="id" value="{{id}}">
+            <span>Nome:</span>
+            <br>
+            <input type="text" name="name" id="">
+            <br><br>
+            <span>Comentário:</span>
+            <br>
+            <textarea name="msg" id="" cols="25" rows="10"></textarea>
+            <br><br>
+            <input type="submit" value="Enviar">
+            <br><br>
+        </form>
 
         {% if comments == false %}
         <p>Nenhum cometário encontrado.</p>
